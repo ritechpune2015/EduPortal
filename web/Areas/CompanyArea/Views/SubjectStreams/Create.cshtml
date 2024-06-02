@@ -1,0 +1,30 @@
+﻿@model SubjectStream
+<div class="col-lg-6">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Create</h5>
+            <div>
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-info">@ViewBag.Message</div>
+                }
+
+            </div>
+            <!-- Vertical Form -->
+            <form class="row g-3" asp-action="Create" method="Post">
+                <div class="col-12">
+                    <label class="form-label">Stream Name</label>
+                    <input asp-for="StreamName" class="form-control" />
+                    <span asp-validation-for="StreamName" class="text-danger"></span>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form><!-- Vertical Form -->
+
+        </div>
+    </div>
+
+
+</div>

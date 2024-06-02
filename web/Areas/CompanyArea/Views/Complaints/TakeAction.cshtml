@@ -1,0 +1,43 @@
+﻿@model OrderComplaintSolution
+<div class="col-lg-6">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Order Complaint Solution</h5>
+            <h5> Solution For Complaint ID:@ViewBag.ComplaintID </h5>
+            <div>
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-info">@ViewBag.Message</div>
+                }
+
+            </div>
+            <!-- Vertical Form -->
+            <form class="row g-3" asp-action="TakeAction" method="Post">
+                <input type="hidden" asp-for="OrderComplaintID" value="@ViewBag.ComplaintID" />
+
+                <div class="col-12">
+                    <label class="form-label">Solution Title</label>
+                    <input asp-for="SolutionTitle" class="form-control" />
+                    <span asp-validation-for="SolutionTitle" class="text-danger"></span>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Solution Desc</label>
+                    <textarea asp-for="SolutionDesc" class="form-control">
+                    </textarea>
+                    <span asp-validation-for="SolutionDesc" class="text-danger"></span>
+                </div>
+
+
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Add Solution</button>
+                </div>
+            </form><!-- Vertical Form -->
+
+        </div>
+    </div>
+
+
+</div>

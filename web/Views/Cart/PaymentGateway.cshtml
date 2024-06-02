@@ -1,0 +1,35 @@
+﻿@model PaymentGatewayVM
+
+<div class="row">
+     <div class="col-md-12">
+          <h2> Demo Payment Gateway</h2>
+          <form asp-action="PaymentGateway" method="post">
+            <input type="hidden" name="pmode" value="@ViewBag.PaymentMode" />
+               <table class="table table-border">
+                   <tr>
+                       <td> Card No:</td>
+                       <td>
+                           <input asp-for="CardNo" />
+                       </td>
+                   </tr>
+                   <tr>
+                       <td> Expiry Date:</td>
+                       <td>
+                           <input asp-for="ExpiryDate" />
+                       </td>
+                   </tr>
+                   <tr>
+                       <td> CVV :</td>
+                       <td>
+                        <input asp-for="CCV" />
+                       </td>
+                   </tr>
+                   <tr>
+                       <td> 
+                           <input type="submit" value="Make Payment" class="btn btn-success" />
+                       </td>
+                   </tr>
+               </table>
+          </form>
+     </div>
+</div>

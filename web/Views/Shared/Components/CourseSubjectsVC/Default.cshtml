@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SubjectStream>
+<aside class="single_sidebar_widget post_category_widget">
+            <h2 class="widget_title" style="color: #2d2d2d;">Category</h2>
+                <a class="btn btn-danger" asp-action="GetCourses" asp-controller="Home" asp-route-id="0"> All Courses</a>
+
+                @foreach(var temp in Model)
+                {
+                    <div class="card pt-2">
+                         <div class="card-header">
+                <h3>@temp.StreamName </h3>
+                         </div>
+                         <div class="card-body">
+                <ul>
+                    @foreach (var temp1 in temp.Subjects)
+                    {
+                        <li class="pt-2">
+                            <a class="text-danger" asp-action="GetCourses" asp-controller="Home" asp-route-id="@temp1.SubjectID"> @temp1.SubjectName</a>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+                    </div>
+                 
+                 
+                 
+
+                }
+             
+         </aside>

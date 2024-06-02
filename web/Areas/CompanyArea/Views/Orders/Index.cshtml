@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Order>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Order List</h5>
+
+        <hr />
+        <!-- Bordered Table -->
+        <table class="table table-bordered" id="otbl">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th> Order No</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Order Date</th>
+                    <th scope="col">Is Paid</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int srno = 1;
+                }
+                @foreach (var temp in Model)
+                {
+                    <tr>
+                        <th scope="row">@srno</th>
+                        <td>@temp.OrderID</td>
+                        <td>@temp.User.FullName</td>
+                        <td>@temp.OrderDate</td>
+                        @if (temp.IsPaid)
+                        {
+                            <td class="alert-success">Yes</td>
+                        }
+                        else
+                        {
+                            <td class="alert-danger">No</td>
+                        }
+                        <td>
+                            |
+                            <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@temp.OrderID">Details</a>
+                        </td>
+                    </tr>
+                    srno++;
+                }
+            </tbody>
+        </table>
+        <!-- End Bordered Table -->
+
+
+
+    </div>  
+</div>
+<script type="text/javascript">
+  $(function(){
+        new simpleDatatables.DataTable("#otbl");
+  });
+</script>
+    

@@ -1,0 +1,294 @@
+﻿@model IEnumerable<Course>
+<div class="courses-area section-padding40 fix">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-8">
+                <div class="section-tittle text-center mb-55">
+                    <h2>Our Courses</h2>
+                     <hr />
+                     <div>
+                         @TempData["Message"]
+                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+               
+                @await Component.InvokeAsync("CourseSubjectsVC")
+            </div>
+            <div class="col-lg-9">
+                <div class="row">
+                     <div class="col-lg-12">
+                       <div class="card">
+                           <div class="card-body">
+                                <form asp-action="GetCourses" asp-controller="Home" method="post">
+                             <div class="row">
+                                  <div class="col-md-4">
+                                      <label>Select Stream:</label>
+                                      <select id="stream" class="form-select" asp-items="@ViewBag.Streams">
+                                          <option value="0"> Select Stream</option>
+                                      </select>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label> Select Subject: </label>
+                                    <select class="form-select" id="subject" name="id">
+                                        <option> --Select Subject--</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-md-2">
+                                       <input type="submit" value="Search" class="btn btn-success" style="margin:10px;" />
+                                  </div>
+                             </div>
+
+                             
+                             
+                        </form>
+                           </div>
+                       </div>
+                        <br />
+
+                </div>
+                </div>
+                <div class="row">
+                    @foreach (var temp in Model)
+                    {
+                        <div class="col-lg-4">
+                            <div class="properties properties2 mb-30">
+                                <div class="properties__card">
+                                    <div class="properties__img overlay1">
+                                        <a asp-action="GetCourseDetails" asp-controller="Home" asp-route-id="@temp.CourseID"><img src="@temp.ImageFilePath" width="262" height="120" alt=""></a>
+                                    </div>
+                                    <div class="properties__caption">
+                                        <p>@temp.Subject.SubjectName</p>
+                                        <p>Duration (Hours):@temp.DurationInHours</p>
+                                        <h3><a href="#">@temp.CourseName</a></h3>
+                                        <p>
+
+                                            @temp.CourseDescription.Substring(0,(temp.CourseDescription.Length-30)) ...
+                                        </p>
+                                        <div class="properties__footer d-flex justify-content-between align-items-center">
+                                            @* <div class="restaurant-name">
+                                        <div class="rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half"></i>
+                                        </div>
+                                        <p><span>(4.5)</span> based on 120</p>
+                                        </div>*@
+                                            <div class="price">
+                                                <span style="font-size:16px;">@temp.Price (INR)</span>
+                                            </div>
+                                        </div>
+                                        <a asp-action="GetCourseDetails" asp-controller="Home" asp-route-id="@temp.CourseID" class="btn btn-success">Find More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+           
+        
+          
+           
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-8">
+                <div class="section-tittle text-center mt-40">
+                    <a href="#" class="border-btn">Load More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Courses area End -->
+<!--? top subjects Area Start -->
+<div class="topic-area">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-8">
+                <div class="section-tittle text-center mb-55">
+                    <h2>Explore top subjects</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="single-topic text-center mb-30">
+                    <div class="topic-img">
+                        <img src="~/frontend/img/gallery/topic1.png" alt="">
+                        <div class="topic-content-box">
+                            <div class="topic-content">
+                                <h3><a href="#">Programing</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="single-topic text-center mb-30">
+                    <div class="topic-img">
+                        <img src="~/frontend/img/gallery/topic2.png" alt="">
+                        <div class="topic-content-box">
+                            <div class="topic-content">
+                                <h3><a href="#">Programing</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="single-topic text-center mb-30">
+                    <div class="topic-img">
+                        <img src="~/frontend/img/gallery/topic3.png" alt="">
+                        <div class="topic-content-box">
+                            <div class="topic-content">
+                                <h3><a href="#">Programing</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="single-topic text-center mb-30">
+                    <div class="topic-img">
+                        <img src="~/frontend/img/gallery/topic4.png" alt="">
+                        <div class="topic-content-box">
+                            <div class="topic-content">
+                                <h3><a href="#">Programing</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="single-topic text-center mb-30">
+                    <div class="topic-img">
+                        <img src="~/frontend/img/gallery/topic5.png" alt="">
+                        <div class="topic-content-box">
+                            <div class="topic-content">
+                                <h3><a href="#">Programing</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="single-topic text-center mb-30">
+                    <div class="topic-img">
+                        <img src="~/frontend/img/gallery/topic6.png" alt="">
+                        <div class="topic-content-box">
+                            <div class="topic-content">
+                                <h3><a href="#">Programing</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="single-topic text-center mb-30">
+                    <div class="topic-img">
+                        <img src="~/frontend/img/gallery/topic7.png" alt="">
+                        <div class="topic-content-box">
+                            <div class="topic-content">
+                                <h3><a href="#">Programing</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="single-topic text-center mb-30">
+                    <div class="topic-img">
+                        <img src="~/frontend/img/gallery/topic8.png" alt="">
+                        <div class="topic-content-box">
+                            <div class="topic-content">
+                                <h3><a href="#">Programing</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-xl-12">
+                <div class="section-tittle text-center mt-20">
+                    <a href="courses.html" class="border-btn">View More Subjects</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- top subjects End -->
+<!-- ? services-area -->
+<div class="services-area services-area2 section-padding40">
+    <div class="container">
+        <div class="row justify-content-sm-center">
+            <div class="col-lg-4 col-md-6 col-sm-8">
+                <div class="single-services mb-30">
+                    <div class="features-icon">
+                        <img src="~/frontend/img/icon/icon1.svg" alt="">
+                    </div>
+                    <div class="features-caption">
+                        <h3>60+ UX courses</h3>
+                        <p>The automated process all your website tasks.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-8">
+                <div class="single-services mb-30">
+                    <div class="features-icon">
+                        <img src="~/frontend/img/icon/icon2.svg" alt="">
+                    </div>
+                    <div class="features-caption">
+                        <h3>Expert instructors</h3>
+                        <p>The automated process all your website tasks.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-8">
+                <div class="single-services mb-30">
+                    <div class="features-icon">
+                        <img src="~/frontend/img/icon/icon3.svg" alt="">
+                    </div>
+                    <div class="features-caption">
+                        <h3>Life time access</h3>
+                        <p>The automated process all your website tasks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <script type="text/javascript">
+       $(function () {
+            $("#stream").change(function () {
+              
+                $.ajax({
+                    url: "/Home/GetSubjetsJson/"+$("#stream").val(),
+                    type:"Get",
+                    contentType:"application/json",
+                    success:function(result)
+                    {
+                        //alert(JSON.stringify(result));
+                        $("#subject").empty();
+                        for(var i=0;i<result.length;i++)
+                        {
+                          var str="<option value='"+result[i].subjectID+"'>" + result[i].subjectName+"</option>";
+                          $("#subject").append(str);
+                        }
+                    },
+                    error:function(err)
+                    {
+                      alert(JSON.stringify(err));
+                    }
+                });
+
+            });
+
+        });
+</script>

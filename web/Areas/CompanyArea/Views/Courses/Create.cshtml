@@ -1,0 +1,65 @@
+﻿@model Course
+<div class="col-lg-6">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Create</h5>
+            <div>
+                @if (ViewBag.Message != null)
+                {
+                    <div class="alert alert-info">@ViewBag.Message</div>
+                }
+
+            </div>
+            <!-- Vertical Form -->
+            <form class="row g-3" enctype="multipart/form-data" asp-action="Create" method="Post">
+                <div class="col-12">
+                    <label class="form-label">Course Name</label>
+                    <input asp-for="CourseName" class="form-control" />
+                    <span asp-validation-for="CourseName" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Duration In Hours</label>
+                    <input asp-for="DurationInHours" class="form-control" />
+                    <span asp-validation-for="DurationInHours" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Course Description</label>
+                    <textarea asp-for="CourseDescription" class="form-control"></textarea>
+                    <span asp-validation-for="CourseDescription" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Requirements</label>
+                    <textarea asp-for="Prerequisite" class="form-control"></textarea>
+                    <span asp-validation-for="Prerequisite" class="text-danger"></span>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Price</label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Course Icon</label>
+                    <input type="file" asp-for="ActualFile" class="form-control" />
+                    <span asp-validation-for="ActualFile" class="text-danger"></span>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Select Subject</label>
+                    <select class="form-select" asp-for="SubjectID" asp-items="@ViewBag.Subjects">
+                        <option> Select Subject</option>
+                    </select>
+                    <span asp-validation-for="SubjectID" class="text-danger"></span>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form><!-- Vertical Form -->
+
+        </div>
+    </div>
+
+
+</div>

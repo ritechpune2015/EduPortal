@@ -1,0 +1,39 @@
+﻿@model IEnumerable<OrderComplaint>
+
+<div class="card">
+    <div class="card-body">
+        <!-- Bordered Table -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Order ID</th>
+                    <th> User Name</th>
+                    <th> Complaint Date</th>
+                    <th> Complaint Title</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int srno = 1;
+                }
+                @foreach (var temp in Model)
+                {
+                    <tr>
+                        <th scope="row">@srno</th>
+                        <td>@temp.OrderID</td>
+                        <td>@temp.Order.User.FullName</td>
+                        <td>@temp.ComplaintDate</td>
+                        <td>@temp.ComplaintTitle</td>
+                        <td>
+                            <a class="btn btn-outline-primary" asp-action="TakeAction" asp-route-id="@temp.OrderComplaintID">Take Action</a>
+                        </td>
+                    </tr>
+                    srno++;
+                }
+            </tbody>
+        </table>
+        <!-- End Bordered Table -->
+    </div>
+</div>

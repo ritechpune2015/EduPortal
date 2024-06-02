@@ -1,0 +1,29 @@
+﻿@model OrderComplaintSolution
+<div class="profile-overview">
+    <h5 class="card-title">Solution Details</h5>
+     <div class="row">
+        <div class="col-lg-3 col-md-4 label ">Solution For Complaint ID:</div>
+        <div class="col-lg-9 col-md-8">@Model.OrderComplaintID</div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-4 label ">Solution Title:</div>
+        <div class="col-lg-9 col-md-8">@Model.SolutionTitle</div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-4 label">Solution Desc:</div>
+        <div class="col-lg-9 col-md-8">@Model.SolutionDesc</div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-4 label">Solution Date:</div>
+        <div class="col-lg-9 col-md-8">@Model.SolutionDate</div>
+    </div>
+
+   
+
+    <div>
+        <a class="btn btn-primary" asp-action="Index"> Back </a>
+    </div>
+</div>

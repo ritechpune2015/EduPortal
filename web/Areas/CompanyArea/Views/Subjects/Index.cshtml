@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Subject>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Subject List</h5>
+ 
+        <a class="btn btn-success" asp-action="Create"> Create </a>
+        <hr />
+        <!-- Bordered Table -->
+        <table class="table table-bordered" id="sub">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Suject Name</th>
+                    <th scope="col">Stream Name</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int srno = 1;
+                }
+                @foreach(var temp in Model)
+                {
+                <tr>
+                    <th scope="row">@srno</th>
+                        <td>@temp.SubjectName</td>
+                    <td>@temp.Stream.StreamName</td>
+                    <td>
+                          <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@temp.SubjectID">Edit</a>
+                          |
+                         <a class="btn btn-outline-primary" asp-action="Delete" asp-route-id="@temp.SubjectID">Delete</a>
+                    </td>
+                </tr>
+                srno++;
+                }
+            </tbody>
+        </table>
+        <!-- End Bordered Table -->
+
+       
+
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        new simpleDatatables.DataTable("#sub");
+    });
+</script>

@@ -1,0 +1,52 @@
+﻿@model CompanyProfileVM
+<div class="col-lg-6">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Edit Company Profile</h5>
+            <div>
+                @if (ViewBag.Message != null)
+                { 
+                   <div class="alert alert-info">@ViewBag.Message</div>
+                }
+
+            </div>
+            <!-- Vertical Form -->
+            <form class="row g-3" asp-action="EditProfile" method="Post">
+                <div class="col-12">
+                    <label class="form-label">Company Name</label>
+                    <input asp-for="CompanyName"  class="form-control" />
+                    <span asp-validation-for="CompanyName" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Address</label>
+                    <textarea asp-for="Address" class="form-control">
+                    </textarea>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label">Email ID</label>
+                    <input asp-for="EmailID" class="form-control" />
+                    <span asp-validation-for="EmailID" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Mobile No</label>
+                    <input asp-for="MobileNo" class="form-control" />
+                    <span asp-validation-for="MobileNo" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Website Url</label>
+                    <input asp-for="WebsiteUrl" class="form-control" />
+                    <span asp-validation-for="WebsiteUrl" class="text-danger"></span>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </form><!-- Vertical Form -->
+
+        </div>
+    </div>
+
+
+</div>
