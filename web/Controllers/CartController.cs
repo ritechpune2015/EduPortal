@@ -84,5 +84,11 @@ namespace web.Controllers
             ViewBag.Message = res.Message;
             return RedirectToAction("GetCart");
         }
+
+        public ActionResult ModifyCart()
+        {
+            //Cart Modified
+            return View();
+        }
     }
 }
